@@ -11,22 +11,34 @@ export const getArrayProduct = (arr) => arr.reduce((acc, num) => {
     return acc;
 }, 1)
 
-export const isPrime = num => {
-    if (num === 1 || num === 2) return false;
+export const isPrime = (num, list) => {
+    if (num === 1) return false;
+    if (num === 2) return true;
     let isPrime = true
-    for (let i = 2; i < num; i++) {
-        if (num % i === 0) {
-            isPrime = false;
-            break
+    if (!list) {
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) {
+                isPrime = false;
+                break
+            }
+        }
+
+    } else {
+        for (let i = 0; i < list.length; i++) {
+            if (num % list[i] === 0) {
+                isPrime = false;
+                break
+            }
         }
     }
     return isPrime;
 }
 
+
 export const getPrimes = (minNum, maxNum) => {
     let primes = []
     for (let j = minNum; j <= maxNum; j++) {
-        if (isPrime(j)) {
+        if (isPrime(j, primes)) {
             primes.push(j);
         }
     }

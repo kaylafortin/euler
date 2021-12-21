@@ -9,6 +9,10 @@ export const template = (args, testingArgs, testAnswer, solution) => {
     console.timeEnd("test time");
     const isTestCorrect = controlAnswer === testAnswer;
     console.log('control test is correct? ', isTestCorrect)
+    if (!isTestCorrect) {
+        console.log('expected: ', testAnswer);
+        console.log('actual: ', controlAnswer);
+    }
     if (isTestCorrect) {
         console.time("solution time");
         const answer = solution(args)
