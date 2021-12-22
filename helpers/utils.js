@@ -12,7 +12,7 @@ export const getArrayProduct = (arr) => arr.reduce((acc, num) => {
 }, 1)
 
 export const isPrime = (num, list) => {
-    if (num === 1) return false;
+    if (num <= 1) return false;
     if (num === 2) return true;
     let isPrime = true
     if (!list) {
@@ -25,12 +25,16 @@ export const isPrime = (num, list) => {
 
     } else {
         for (let i = 0; i < list.length; i++) {
+            if (list[i] >= num) {
+                break
+            }
             if (num % list[i] === 0) {
                 isPrime = false;
                 break
             }
         }
     }
+
     return isPrime;
 }
 

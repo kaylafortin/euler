@@ -1,4 +1,4 @@
-import { isPrime } from '../helpers/utils.js';
+import { isPrime, getPrimes } from '../helpers/utils.js';
 import { template } from '../helpers/template.js';
 // create an array of primes - if need more ad more
 
@@ -14,27 +14,16 @@ const TEST_ARGS = {
 }
 const ARGS = {
     length: 5,
-    max: 10000,
+    max: 30000,
 }
 
-const checkConcat = (prime, base) => {
+const checkConcat = (prime, base, primes) => {
     const concat1 = (prime.toString() + base.toString());
-    if (!isPrime(concat1)) return false;
+    if (!isPrime(concat1, primes)) return false;
     const concat2 = base.toString() + prime.toString();
-    return isPrime(concat2)
+    return isPrime(concat2, primes)
 
 
-}
-
-// step one - get primes
-const getPrimes = (minNum, maxNum) => {
-    let primes = []
-    for (let j = minNum; j <= maxNum; j++) {
-        if (isPrime(j)) {
-            primes.push(j);
-        }
-    }
-    return primes
 }
 
 
@@ -112,7 +101,7 @@ const loopOverPrimes = (num, index, primes) => {
     // console.log(index);
     for (let i = index; i < primes.length; i++) {
         const primeCheck = primes[i];
-        if (checkConcat(num, primeCheck)) {
+        if (checkConcat(num, primeCheck, primes)) {
             concatObj.push(primeCheck)
             // concatObj[primeCheck] = primeCheck;
             hasMatch = true;
@@ -124,7 +113,7 @@ const loopOverPrimes = (num, index, primes) => {
 
 
 // three fdifferent options dor 7, and then an array should be returned with three elements
-const checkConcatsArray = (conctArray, length, step, currentCheck = [], loop = [], num) => {
+const checkConcatsArray = (conctArray, length, step, currentCheck = [], loop = [], primes) => {
 
     if (conctArray.length < length - step && step < length) {
         return loop;
@@ -139,7 +128,7 @@ const checkConcatsArray = (conctArray, length, step, currentCheck = [], loop = [
             const elm = conctArray[i]
 
             const filtered = conctArray.filter((elm2) => {
-                const isConcat = checkConcat(elm, elm2);
+                const isConcat = checkConcat(elm, elm2, primes);
 
                 return isConcat;
             });
@@ -150,7 +139,7 @@ const checkConcatsArray = (conctArray, length, step, currentCheck = [], loop = [
                     const foundConcats = [...currentCheck];
                     if (foundConcats[foundConcats.length - 1])
                         foundConcats.push(elm);
-                    checkConcatsArray(filtered, length, newStep, foundConcats, loop)
+                    checkConcatsArray(filtered, length, newStep, foundConcats, loop, primes)
                 }
             }
         }
@@ -182,7 +171,6 @@ const getMinAnswer = (answer) => {
 }
 const getByArray = ({ max, length = 3 }) => {
     const answer = [];
-    let found = false;
     const primes = buildPrimesArray(max);
     const step = 1;
     for (let i = 0; i < primes.length; i++) {
@@ -190,17 +178,13 @@ const getByArray = ({ max, length = 3 }) => {
         const concatsObject = loopOverPrimes(num, i, primes);
         if (concatsObject?.length >= length - step) {
             const currentCheck = [num];
-            const concatsHEre = checkConcatsArray(concatsObject, length, step, currentCheck, [], num);
+            const concatsHEre = checkConcatsArray(concatsObject, length, step, currentCheck, [], primes);
             const answers = concatsHEre?.forEach((concatArray) => {
                 if (concatArray?.length >= length) {
-                    found = true
                     console.log('prime factors: ', concatArray);
                     answer.push(concatArray)
                 }
             });
-        }
-        if (found) {
-            break;
         }
     }
     return getMinAnswer(answer)
