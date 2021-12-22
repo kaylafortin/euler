@@ -15,7 +15,7 @@ const TEST_ARGS = {
 }
 const TEST_ANSWER = 13;
 
-export const getPrimes = (index) => {
+const getPrimes = (index) => {
     let primes = []
     let j = 1;
     while (primes.length < index) {
