@@ -6,9 +6,7 @@ export const getArraySum = (arr) => arr.reduce((acc, num) => {
 }, 0)
 
 export const getArrayProduct = (arr) => arr.reduce((acc, num) => {
-    const newVal = acc * num;
-    acc += newVal;
-    return acc;
+    return acc * Number(num);
 }, 1)
 
 export const isPrime = (num, list) => {
