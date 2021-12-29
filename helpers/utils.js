@@ -66,16 +66,25 @@ export const getLargestFactor = (root) => {
     return root / smallest
 }
 
-export const getAllFactors = (root, arr = []) => {
+export const getAllPrimeFactors = (root, arr = []) => {
     const smallest = getSmallestFactor(root)
     const remainder = root / smallest;
-    // console.log(smallest, remainder)
     arr.push(smallest);
     if (remainder > 1) {
-        return getAllFactors(remainder, arr);
+        return getAllPrimeFactors(remainder, arr);
     }
     return arr;
 }
 
-
+export const getAllFactorPairs = (root) => {
+    let factors = []
+    let max = root;
+    for (let i = 1; i < max; i++) {
+        if (getIsDivisible(i, root)) {
+            max = root / i;
+            factors.push(i, max)
+        }
+    }
+    return factors;
+}
 

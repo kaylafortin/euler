@@ -1,4 +1,4 @@
-import { getAllFactors } from '../helpers/utils.js';
+import { getAllPrimeFactors } from '../helpers/utils.js';
 import { template } from '../helpers/template.js'
 
 /**
@@ -45,7 +45,7 @@ const solution = ({ min, max }) => {
     let allFactors = [];
     for (let i = max; i >= min; i--) {
         if (i > 1) {
-            const factors = getAllFactors(i)
+            const factors = getAllPrimeFactors(i)
             allFactors.push(factors)
         }
     }
