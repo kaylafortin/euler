@@ -4,16 +4,19 @@ const TEST_ANSWER = 0;
 
 
 export const template = (args, testingArgs, testAnswer, solution) => {
-    console.time("test time");
-    const controlAnswer = solution(testingArgs)
-    console.timeEnd("test time");
-    const isTestCorrect = controlAnswer === testAnswer;
-    console.log('control test is correct? ', isTestCorrect)
-    if (!isTestCorrect) {
-        console.log('expected: ', testAnswer);
-        console.log('actual: ', controlAnswer);
+    let isTestCorrect;
+    if (testAnswer) {
+        console.time("test time");
+        const controlAnswer = solution(testingArgs)
+        console.timeEnd("test time");
+        isTestCorrect = controlAnswer === testAnswer;
+        console.log('control test is correct? ', isTestCorrect)
+        if (!isTestCorrect) {
+            console.log('expected: ', testAnswer);
+            console.log('actual: ', controlAnswer);
+        }
     }
-    if (isTestCorrect) {
+    if (!testAnswer || isTestCorrect) {
         console.time("solution time");
         const answer = solution(args)
         console.log('solution: ', answer);
