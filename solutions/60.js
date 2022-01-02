@@ -165,7 +165,7 @@ const getMinAnswer = (answer) => {
         return acc;
     }, {
         index: 0,
-        sum: 0,
+        numsum: 0,
     })
     return sumAcc.sum;
 }
