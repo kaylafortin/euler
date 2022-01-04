@@ -9,6 +9,20 @@ export const getArrayProduct = (arr) => arr.reduce((acc, num) => {
     return acc * Number(num);
 }, 1)
 
+export const getDigitsOfNumberSum = (num) => {
+    const str = typeof (num) !== 'string' ? num.toString() : num;
+    const digitsArray = str.split('').map((item) => Number(item) || 0);
+    return getArraySum(digitsArray);
+}
+
+export const getFactorial = num => {
+    let sum = BigInt(1)
+    for (let i = num; i > 0; i--) {
+        sum = BigInt(sum) * BigInt(i)
+    }
+    return BigInt(sum);
+}
+
 export const createTriangle = (triangleStr) => triangleStr.split('\n').map((row, rowIndex) =>
     row.trim().split(' ').map((elm, colIndex) => ({
         row: rowIndex,

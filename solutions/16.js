@@ -1,5 +1,5 @@
 import { template } from '../helpers/template.js'
-import { getArraySum } from '../helpers/utils.js';
+import { getArraySum, getDigitsOfNumberSum } from '../helpers/utils.js';
 
 /**
  * 2**15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
@@ -33,11 +33,6 @@ const getWholeNumber = (str) => Number(str.substring(0, str.indexOf('.')))
 
 const getCurrentTotal = (str) => getWholeNumber(str) * getPower(str);
 
-const getSum = (str) => {
-    const digitsArray = str.split('').map((item) => Number(item) || 0);
-    return getArraySum(digitsArray);
-}
-
 const getSumLoop = (total, sum = 0) => {
     const totalAsString = total.toString()
     if (hasExponent(totalAsString)) {
@@ -46,7 +41,7 @@ const getSumLoop = (total, sum = 0) => {
         const newSum = sum + firstDigit;
         return getSumLoop(remainder, newSum)
     }
-    const newSum = getSum(totalAsString)
+    const newSum = getDigitsOfNumberSum(totalAsString)
     return newSum + sum
 }
 
