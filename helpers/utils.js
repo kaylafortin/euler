@@ -99,15 +99,18 @@ export const getAllPrimeFactors = (root, arr = []) => {
     return arr;
 }
 
-export const getAllFactorPairs = (root) => {
+export const getAllFactorPairs = (root, isProper) => {
     let factors = []
     let max = root;
     for (let i = 1; i < max; i++) {
         if (getIsDivisible(i, root)) {
             max = root / i;
-            factors.push(i, max)
+            if (max === root && isProper) {
+                factors.push(i)
+            } else {
+                factors.push(i, max)
+            }
         }
     }
     return factors;
 }
-
