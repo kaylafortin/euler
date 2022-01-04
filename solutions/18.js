@@ -35,8 +35,8 @@ import { createTriangle } from '../helpers/utils.js'
  *
  */
 
-const TEST_ANSWER = 23;
-const TEST_ARGS = {
+export const TEST_ANSWER = 23;
+export const TEST_ARGS = {
     str:
         '3\n' +
         '7 4\n' +
@@ -63,7 +63,7 @@ const ARGS = {
         ' 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23'
 };
 
-class Triangle {
+export class Triangle {
     constructor(triangleStr) {
         this.arr = createTriangle(triangleStr);
         this.lastRow = this.arr.length - 1
@@ -103,7 +103,7 @@ class Triangle {
     }
 }
 
-const solution = ({ str }) => {
+export const solution = ({ str }) => {
     const triangle = new Triangle(str);
     return triangle.getBestPath()
 }
