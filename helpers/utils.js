@@ -105,7 +105,9 @@ export const getAllFactorPairs = (root, isProper) => {
     for (let i = 1; i < max; i++) {
         if (getIsDivisible(i, root)) {
             max = root / i;
-            if (max === root && isProper) {
+            if (isProper && max === root && i !== root) {
+                factors.push(i)
+            } else if (isProper && i === max) {
                 factors.push(i)
             } else {
                 factors.push(i, max)
@@ -113,4 +115,9 @@ export const getAllFactorPairs = (root, isProper) => {
         }
     }
     return factors;
+}
+
+export const getSumOfProperDivisors = (num) => {
+    const divisorArray = getAllFactorPairs(num, true);
+    return getArraySum(divisorArray)
 }

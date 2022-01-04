@@ -1,5 +1,5 @@
 import { template } from '../helpers/template.js';
-import { getAllFactorPairs, getArraySum, getDigitsOfNumberSum, getFactorial } from '../helpers/utils.js';
+import { getSumOfProperDivisors, getArraySum } from '../helpers/utils.js';
 
 /**
  * Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
@@ -22,22 +22,15 @@ const ARGS = {
     max: 10000
 }
 
-const IS_PROPER = true;
-
-const getSumOfDivisors = (num) => {
-    const divisorArray = getAllFactorPairs(num, IS_PROPER);
-    return getArraySum(divisorArray)
-}
-
 const solution = ({ min, max }) => {
     const divisors = {}
     const answers = []
     for (let num = min; num < max; num++) {
         if (divisors[num]) continue
-        const sum = getSumOfDivisors(num);
+        const sum = getSumOfProperDivisors(num);
         divisors[num] = sum
         if (!divisors[sum]) {
-            divisors[sum] = getSumOfDivisors(sum);
+            divisors[sum] = getSumOfProperDivisors(sum);
         }
         if (divisors[sum] === num && sum !== num) {
             answers.push(sum, num)
