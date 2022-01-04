@@ -9,6 +9,15 @@ export const getArrayProduct = (arr) => arr.reduce((acc, num) => {
     return acc * Number(num);
 }, 1)
 
+export const createTriangle = (triangleStr) => triangleStr.split('\n').map((row, rowIndex) =>
+    row.trim().split(' ').map((elm, colIndex) => ({
+        row: rowIndex,
+        col: colIndex,
+        data: Number(elm),
+        sum: Number(elm),
+        path: [],
+    })));
+
 export const isPrime = (num, list) => {
     if (num <= 1) return false;
     if (num === 2) return true;
