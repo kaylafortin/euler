@@ -15,8 +15,8 @@ import { getSumOfProperDivisors } from '../helpers/utils.js';
  Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
  */
 
-export const TEST_ANSWER = 276
-export const TEST_ARGS = {
+const TEST_ANSWER = 276
+const TEST_ARGS = {
     min: 1,
     max: 25
 };

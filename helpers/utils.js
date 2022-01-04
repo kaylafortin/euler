@@ -20,7 +20,7 @@ export const getFactorial = num => {
     for (let i = num; i > 0; i--) {
         sum = BigInt(sum) * BigInt(i)
     }
-    return BigInt(sum);
+    return sum < Number.MAX_SAFE_INTEGER ? Number(sum) : BigInt(sum);
 }
 
 export const createTriangle = (triangleStr) => triangleStr.split('\n').map((row, rowIndex) =>
