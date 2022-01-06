@@ -13,7 +13,7 @@ const TEST_ARGS = {
 const ARGS = { max: 2000000 };
 
 const solution = ({ max }) => {
-    const primes = getPrimes(1, max);
+    const primes = getPrimes(max);
     return getArraySum(primes)
 }
 

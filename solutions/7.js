@@ -15,7 +15,7 @@ const TEST_ARGS = {
 }
 const TEST_ANSWER = 13;
 
-const getPrimes = (index) => {
+const getPrimesUnderLimit = (index) => {
     let primes = []
     let j = 1;
     while (primes.length < index) {
@@ -28,7 +28,7 @@ const getPrimes = (index) => {
 }
 
 const solution = ({ index }) => {
-    const primes = getPrimes(index);
+    const primes = getPrimesUnderLimit(index);
     return primes[index - 1];
 }
 

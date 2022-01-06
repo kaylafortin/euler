@@ -60,9 +60,9 @@ export const isPrime = (num, list) => {
 }
 
 
-export const getPrimes = (minNum, maxNum) => {
+export const getPrimes = (maxNum) => {
     let primes = []
-    for (let j = minNum; j <= maxNum; j++) {
+    for (let j = 1; j <= maxNum; j++) {
         if (isPrime(j, primes)) {
             primes.push(j);
         }

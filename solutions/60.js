@@ -84,7 +84,7 @@ const compareListLoop = async (currentList, list, step, answerKey, lengthList) =
 
 const buildPrimesArray = (max) => {
     console.time("primes");
-    const array = getPrimes(0, max)
+    const array = getPrimes(max)
     // console.log(array)
     console.timeEnd("primes");
     return array
