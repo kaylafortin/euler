@@ -62,7 +62,7 @@ const solution = ({ max }) => {
             answer.num = j
         }
     }
-
+    console.log(answer)
     return answer.num
 
 }
