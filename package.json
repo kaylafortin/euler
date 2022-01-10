@@ -5,10 +5,11 @@
     "average": "node ./scripts/average.js",
     "clear": "node ./scripts/cache.js",
     "solution": "node ./scripts/solution.js",
-    "solution:log": "node ./scripts/solution.js log",
     "solution:average": "sh -c 'AVERAGE=$(yarn average ${0}) && yarn solution:log average ${AVERAGE} ${0}'",
+    "solution:log": "node ./scripts/solution.js log",
     "test": "node ./scripts/test.js",
     "test:average": "yarn test average",
+    "test:record": "node ./scripts/test.js record",
     "test:time": "yarn test time"
   },
   "dependencies": {

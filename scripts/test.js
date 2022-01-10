@@ -8,7 +8,7 @@ import {
     getFileRows,
     getTimeInMilliseconds,
     getMSTimeStr,
-    withAverageTime
+    withAverageTime, withRecordAnswers
 } from './utils.js';
 
 
@@ -64,7 +64,7 @@ const getAnswer = ({ num, solution, answerKey }) => {
         console.log('oh no!')
         console.log(`check the result for problem #${num}`)
         console.log(`${storedAnswer.result} !== ${result}`)
-        process.exit(1)
+        if (withRecordAnswers(process)) process.exit(1)
     }
 
     const average = compareSolutionTime(num, time)
@@ -144,8 +144,8 @@ try {
         }
     }
     const answerTable = buildAnswerTable(newAnswers);
-    fs.writeFileSync(answerPath, answerTable)
     console.log(answerTable)
+    if (withRecordAnswers(process)) fs.writeFileSync(answerPath, answerTable)
 } catch (err) {
     console.error(err);
 }

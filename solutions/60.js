@@ -14,7 +14,7 @@ const TEST_ARGS = {
 }
 const ARGS = {
     length: 5,
-    max: 30000,
+    max: 20000,
 }
 
 const checkConcat = (prime, base, primes) => {
