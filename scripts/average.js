@@ -26,20 +26,19 @@ try {
     const lines = getFileRows(logFilePath);
     if (!lines) {
         console.log(`No logs found for problem #${num}`)
-        process.exit(9)
+        // process.exit(9) // TODO: maybe shouldn't exit here
+    } else {
+        const averages = lines.reduce((acc, line) => {
+            const { test, solution } = getTimeFromSolution(line);
+            if (!!test) acc.test.push(test)
+            if (!!solution) acc.solution.push(solution);
+            return acc
+        }, {
+            test: [],
+            solution: [],
+        })
+        console.log(JSON.stringify(getAverageTimeInMilliseconds(averages)))
     }
-    const averages = lines.reduce((acc, line) => {
-        const { test, solution } = getTimeFromSolution(line);
-        if (!!test) acc.test.push(test)
-        if (!!solution) acc.solution.push(solution);
-        return acc
-    }, {
-        test: [],
-        solution: [],
-    })
-
-    console.log(JSON.stringify(getAverageTimeInMilliseconds(averages)))
-
 } catch (e) {
     console.log('ERROR!')
     console.log(e)

@@ -71,6 +71,7 @@ export const getPrimes = (maxNum) => {
 }
 
 export const getIsDivisible = (num, root) => root % num === 0;
+export const getIsOdd = (root) => root % 2 !== 0;
 
 // must be able to multiply by 2 since 2 is the largest whole factor of any number
 export const getSmallestFactor = (root) => {
@@ -115,6 +116,28 @@ export const getAllFactorPairs = (root, isProper) => {
         }
     }
     return factors;
+}
+
+export const getAllProperDivisors = (root) => {
+    let factors = []
+    const step = getIsOdd(root) ? 2 : 1;
+    let max = Math.floor(Math.sqrt(root));
+    if (max * max === root) {
+        factors.push(max);
+        max = max - 1
+    }
+
+    for (let i = 1; i < max; i += step) {
+        if (getIsDivisible(i, root)) {
+            const n = root / i;
+            if (i === n || i === 1) {
+                factors.push(i);
+            } else {
+                factors.push(i, n)
+            }
+        }
+    }
+    return factors
 }
 
 export const getSumOfProperDivisors = (num) => {
