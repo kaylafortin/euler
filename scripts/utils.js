@@ -67,4 +67,4 @@ export const getMSTimeStr = (time) => `${Math.round(Number(time) * 1000) / 1000}
 
 export const withAverageTime = (subprocess) => getArgs(subprocess).includes(AVERAGE);
 export const withLogs = (subprocess) => getArgs(subprocess).includes(LOG)
-export const withRecordAnswers = (subprocess) => getArgs(subprocess).includes('RECORD')
+export const withRecordAnswers = (subprocess) => getArgs(subprocess).includes('record')
