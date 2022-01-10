@@ -5,7 +5,8 @@
     "average": "node ./scripts/average.js",
     "clear": "node ./scripts/cache.js",
     "solution": "node ./scripts/solution.js",
-    "solution:average": "sh -c 'AVERAGE=$(yarn average ${0}) && yarn solution average ${AVERAGE} ${0}'",
+    "solution:log": "node ./scripts/solution.js log",
+    "solution:average": "sh -c 'AVERAGE=$(yarn average ${0}) && yarn solution:log average ${AVERAGE} ${0}'",
     "test": "node ./scripts/test.js",
     "test:average": "yarn test average",
     "test:time": "yarn test time"

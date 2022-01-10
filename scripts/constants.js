@@ -12,5 +12,6 @@ export const NEW_LINE = '\n'
 export const TABLE_DELIMINATOR = ' | '
 export const MS = 'ms';
 export const AVERAGE = 'average'
+export const LOG = 'log'
 
 export const timeRegex = /(?<=time.*:\s*)(\S\d*\w*.*)/g;

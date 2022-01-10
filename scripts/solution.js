@@ -5,7 +5,7 @@ import {
     getRequiredNumArg,
     getSolutionPath,
     getTimeFromSolution,
-    withAverageTime
+    withAverageTime, withLogs
 } from './utils.js';
 import fs from 'fs';
 import { NEW_LINE, TABLE_DELIMINATOR } from './constants.js';
@@ -53,8 +53,8 @@ try {
         stdio: 'pipe',
         encoding: 'utf8'
     })
-    writeToLogFile({ num, data })
     console.log(data);
+    if (withLogs(process)) writeToLogFile({ num, data })
     if (withAverageTime(process)) getAverage({ num, data })
 } catch (e) {
     console.log('ERROR!')

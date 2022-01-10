@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { execSync } from 'child_process';
-import { ROOT_DIR, SCRIPTS_DIR, NEW_LINE, TABLE_DELIMINATOR } from './constants.js'
+import { ROOT_DIR, SCRIPTS_DIR, NEW_LINE, TABLE_DELIMINATOR, LOG } from './constants.js'
 import {
     getSolutionFiles,
     getProblemNumber,
@@ -134,7 +134,7 @@ try {
     for (const file of solutionFiles) {
         try {
             const num = getProblemNumber(file);
-            const solution = await execSync(`node ${execSolutionPath} ${num}`, {
+            const solution = await execSync(`node ${execSolutionPath} ${LOG} ${num}`, {
                 stdio: 'pipe',
                 encoding: 'utf8'
             })

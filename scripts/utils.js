@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { CACHE_DIR, NEW_LINE, SOLUTIONS_DIR, MS, TABLE_DELIMINATOR, AVERAGE, timeRegex } from './constants.js';
+import { CACHE_DIR, NEW_LINE, SOLUTIONS_DIR, MS, TABLE_DELIMINATOR, AVERAGE, timeRegex, LOG } from './constants.js';
 
 
 export const getProblemNumber = (file) => {
@@ -65,4 +65,5 @@ export const getTimeFromSolution = (templateOutput, deliminator = TABLE_DELIMINA
 
 export const getMSTimeStr = (time) => `${Math.round(Number(time) * 1000) / 1000}${MS}`;
 
-export const withAverageTime = (subprocess) => getArgs(subprocess).includes(AVERAGE)
+export const withAverageTime = (subprocess) => getArgs(subprocess).includes(AVERAGE);
+export const withLogs = (subprocess) => getArgs(subprocess).includes(LOG)
