@@ -2,7 +2,6 @@ const TEST_ARGS = {};
 const ARGS = {};
 const TEST_ANSWER = 0;
 
-
 export const template = (args, testingArgs, testAnswer, solution) => {
     let isTestCorrect;
     if (testAnswer) {
@@ -21,6 +20,6 @@ export const template = (args, testingArgs, testAnswer, solution) => {
         const answer = solution(args)
         console.log('solution: ', answer);
         console.timeEnd("solution time");
+        return answer
     }
 }
-// test(ARGS, TEST_ARGS, TEST_ANSWER)

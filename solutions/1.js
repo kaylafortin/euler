@@ -40,7 +40,6 @@ const getOverlaps = (multiple1, multiple2, limit) => {
 const getNaturals = (multiple, limit) => {
     let naturals = [];
     const numOfNaturals = Math.floor((limit - 1) / multiple);
-    console.log('num of nat', numOfNaturals, limit, multiple)
     for (let i = 1; i <= numOfNaturals; i++) {
         naturals.push(i * multiple);
     }
