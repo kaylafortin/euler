@@ -24,7 +24,7 @@ const localAcc = (acc, factor) => {
 }
 const getFactorACC = (allFactors) =>
     allFactors.reduce((acc, factors) => {
-        const count = factors.reduce((facAcc, factor) => {
+        factors.reduce((facAcc, factor) => {
             const local = localAcc(facAcc, factor);
             if (!acc[factor] || local[factor] > acc[factor]) {
                 acc[factor] = local[factor];

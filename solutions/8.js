@@ -15,7 +15,6 @@ const TEST_ARGS = {
 }
 const ARGS = { digits: 13 }
 
-const convertNumberToString = (num) => `${num}`;
 const splitString = (str) => str.split('');
 
 const getSubstring = (str, start, end) => str.substring(start, end);

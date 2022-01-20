@@ -31,7 +31,7 @@ const getIsTriplet = (arg1, arg2, arg3) => {
 }
 const getTotal = (a, b, c) => a + b + c;
 const getIsEqualTotal = (actTotal, total) => actTotal === total;
-const getIsAbove = (actTotal, total) => actTotal > actTotal;
+const getIsAbove = (actTotal) => actTotal > actTotal;
 const getIsWhole = (c) => c % 1 === 0
 
 const getC = (a, b) => Math.sqrt(a ** 2 + b ** 2);

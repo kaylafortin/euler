@@ -1,7 +1,7 @@
-// step one - get primes
+export const getMaxForNumDigits = (digits) => BigInt(10) ** BigInt(digits - 1) - BigInt(1)
 
 export const getArraySum = (arr) => arr.reduce((acc, num) => {
-    acc += num;
+    acc += Number(num);
     return acc;
 }, 0)
 
@@ -9,15 +9,19 @@ export const getArrayProduct = (arr) => arr.reduce((acc, num) => {
     return acc * Number(num);
 }, 1)
 
-export const getDigitsOfNumberSum = (num) => {
+export const getDigitsOfNumber = (num) => {
     const str = typeof (num) !== 'string' ? num.toString() : num;
-    const digitsArray = str.split('').map((item) => Number(item) || 0);
+    return str.split('').map((item) => Number(item) || 0);
+}
+
+export const getDigitsOfNumberSum = (num) => {
+    const digitsArray = getDigitsOfNumber(num)
     return getArraySum(digitsArray);
 }
 
 export const getFactorial = num => {
     let sum = BigInt(1)
-    for (let i = num; i > 0; i--) {
+    for (let i = 1; i <= num; i++) {
         sum = BigInt(sum) * BigInt(i)
     }
     return sum < Number.MAX_SAFE_INTEGER ? Number(sum) : BigInt(sum);

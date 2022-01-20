@@ -40,8 +40,6 @@ const compareTwoLists = (list1, list2) => {
     return list2.filter((element) => list1.includes(element))
 }
 
-
-const getLastElemnt = (length) => length - 1
 // step is level
 const getIsEnoughMatches = (matches, step, length) => matches?.length >= (length - step)
 
@@ -123,14 +121,11 @@ const checkConcatsArray = (conctArray, length, step, currentCheck = [], loop = [
     if (currentCheck?.length >= length) {
         loop.push(currentCheck);
     } else {
-        let acc = {};
         for (let i = conctArray.length - 1; i >= 0; i--) {
             const elm = conctArray[i]
 
             const filtered = conctArray.filter((elm2) => {
-                const isConcat = checkConcat(elm, elm2, primes);
-
-                return isConcat;
+                return checkConcat(elm, elm2, primes);
             });
 
             const newStep = step + 1;
@@ -175,11 +170,11 @@ const getByArray = ({ max, length = 3 }) => {
     const step = 1;
     for (let i = 0; i < primes.length; i++) {
         const num = primes[i];
-        const concatsObject = loopOverPrimes(num, i, primes);
-        if (concatsObject?.length >= length - step) {
+        const concatObject = loopOverPrimes(num, i, primes);
+        if (concatObject?.length >= length - step) {
             const currentCheck = [num];
-            const concatsHEre = checkConcatsArray(concatsObject, length, step, currentCheck, [], primes);
-            const answers = concatsHEre?.forEach((concatArray) => {
+            const validConcatArr = checkConcatsArray(concatObject, length, step, currentCheck, [], primes);
+            validConcatArr?.forEach((concatArray) => {
                 if (concatArray?.length >= length) {
                     console.log('prime factors: ', concatArray);
                     answer.push(concatArray)

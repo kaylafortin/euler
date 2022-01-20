@@ -1,4 +1,5 @@
 import { template } from '../helpers/template.js';
+import { getMaxForNumDigits } from '../helpers/utils.js';
 
 /**
  * The Fibonacci sequence is defined by the recurrence relation:
@@ -39,8 +40,6 @@ const getFibonacciSequence = ({ maxIndex, maxSum }) => {
     }
     return sequence
 }
-
-const getMaxForNumDigits = (digits) => BigInt(10) ** BigInt(digits - 1) - BigInt(1)
 
 const solution = ({ digits }) => {
     const maxSum = getMaxForNumDigits(digits);

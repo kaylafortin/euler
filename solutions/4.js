@@ -21,7 +21,7 @@ const isPalidrome = (val) => {
     const legnth = valString.length - 1;
     const lengthStringHalf = Math.floor(valString.length / 2)
     let isGood = true;
-    for (var i = 0; i < lengthStringHalf; i++) {
+    for (let i = 0; i < lengthStringHalf; i++) {
         if (!isGood) return;
         if (valString[legnth - i] !== valString[i]) {
             isGood = false;

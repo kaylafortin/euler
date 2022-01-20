@@ -18,7 +18,7 @@ const ARGS = {
     cols: 20,
 };
 
-const getGridItem = (col, row, rows, cols,) => ({
+const getGridItem = (col, row) => ({
     col,
     row,
     moves: 1,
@@ -74,7 +74,7 @@ class Tree {
 
     loopColumns(col, row) {
         this.buildColumn(col, row)
-        const nextCol = col += 1;
+        const nextCol = col + 1;
         if (nextCol > this.cols) return;
         return this.loopColumns(nextCol, 0)
     }
