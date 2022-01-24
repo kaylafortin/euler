@@ -1,6 +1,6 @@
 import { template } from '../helpers/template.js';
 import { buildPermutations } from '../helpers/combinations.js';
-import { getArraySum } from '../helpers/utils.js';
+import { buildNumberFromDigits, getArraySum } from '../helpers/utils.js';
 
 /**
  * We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once;
@@ -19,8 +19,6 @@ const ARGS = {
     digits: DIGITS
 }
 
-const buildNumber = (digitArr) => Number(digitArr.join(''))
-
 const solution = ({ digits }) => {
     const answer = []
 
@@ -28,7 +26,7 @@ const solution = ({ digits }) => {
         const possibleProducts = buildPermutations(digits, i)
 
         const products = possibleProducts.reduce((acc, product) => {
-            const prodNum = buildNumber(product)
+            const prodNum = buildNumberFromDigits(product)
             const remainingNumbers = digits.filter((d) => !product.includes(d))
             const multiplierOptions = [];
             for (let k = 1; k <= remainingNumbers.length - 1; k++) {
@@ -37,7 +35,7 @@ const solution = ({ digits }) => {
             }
             for (let j = 0; j < multiplierOptions.length; j++) {
                 const multiplierPair = remainingNumbers.filter(d => !multiplierOptions[j].includes(d))
-                if (buildNumber(multiplierPair) * buildNumber(multiplierOptions[j]) === prodNum) {
+                if (buildNumberFromDigits(multiplierPair) * buildNumberFromDigits(multiplierOptions[j]) === prodNum) {
                     acc.push(prodNum);
                     break;
                 }

@@ -14,6 +14,8 @@ export const getDigitsOfNumber = (num) => {
     return str.split('').map((item) => Number(item) || 0);
 }
 
+export const buildNumberFromDigits = (digitArr) => Number(digitArr.join(''))
+
 export const getDigitsOfNumberSum = (num) => {
     const digitsArray = getDigitsOfNumber(num)
     return getArraySum(digitsArray);
