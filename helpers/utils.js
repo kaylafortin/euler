@@ -22,7 +22,7 @@ export const getDigitsOfNumberSum = (num) => {
 }
 
 export const getFactorial = num => {
-    
+
     let sum = BigInt(1)
     for (let i = 1; i <= num; i++) {
         sum = BigInt(sum) * BigInt(i)
@@ -150,4 +150,18 @@ export const getAllProperDivisors = (root) => {
 export const getSumOfProperDivisors = (num) => {
     const divisorArray = getAllFactorPairs(num, true);
     return getArraySum(divisorArray)
+}
+
+export const isPalindrome = (val) => {
+    const valString = val.toString();
+    const stringLength = valString.length - 1;
+    const halfLength = Math.floor(stringLength / 2)
+    let isGood = true;
+    for (let i = 0; i <= halfLength; i++) {
+        if (valString[i] !== valString[stringLength - i]) {
+            isGood = false;
+            break;
+        }
+    }
+    return isGood;
 }

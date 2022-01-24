@@ -1,4 +1,5 @@
 import { template } from '../helpers/template.js';
+import { isPalindrome } from '../helpers/utils.js';
 
 /**
  * A palindromic number reads the same both ways.
@@ -13,21 +14,6 @@ const ARGS = {
 }
 const TESTING_ARGS = {
     digits: 2,
-}
-
-
-const isPalidrome = (val) => {
-    const valString = val.toString();
-    const legnth = valString.length - 1;
-    const lengthStringHalf = Math.floor(valString.length / 2)
-    let isGood = true;
-    for (let i = 0; i < lengthStringHalf; i++) {
-        if (!isGood) return;
-        if (valString[legnth - i] !== valString[i]) {
-            isGood = false;
-        }
-    }
-    return isGood;
 }
 
 const solution = ({ digits }) => {
@@ -46,7 +32,7 @@ const solution = ({ digits }) => {
         const num12 = num1 - itteration1
         const num22 = num2 - itteration2
         total = num12 * num22
-        foundPali = isPalidrome(total);
+        foundPali = isPalindrome(total);
         if (foundPali) {
             palidromes.push(total);
             itteration2 += 1
@@ -65,5 +51,3 @@ const solution = ({ digits }) => {
 }
 
 template(ARGS, TESTING_ARGS, TEST_ANSWER, solution)
-
-// console.log(num1, num2, total)
