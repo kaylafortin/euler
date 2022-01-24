@@ -90,14 +90,6 @@ const getStartDayOfNextMonth = (startingDay, month, year) => {
 
 const isSunday = (dayOfWeek) => DAYS_OF_WEEK[dayOfWeek] === SUNDAY
 
-const getDaysPerYear = (year) => {
-    let days = 0;
-    for (let month = 1; month <= 12; month++) {
-        days += getDaysPerMonth(month, year)
-    }
-    return days;
-}
-
 
 const solution = ({ start, end }) => {
     let count = 0;

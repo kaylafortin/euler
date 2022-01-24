@@ -1,7 +1,4 @@
 import { template } from '../helpers/template.js';
-import { getArraySum } from '../helpers/utils.js';
-import { getNumCombinations } from '../helpers/combinations.js';
-import { re } from 'mathjs';
 
 
 /**
