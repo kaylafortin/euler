@@ -22,6 +22,7 @@ export const getDigitsOfNumberSum = (num) => {
 }
 
 export const getFactorial = num => {
+    
     let sum = BigInt(1)
     for (let i = 1; i <= num; i++) {
         sum = BigInt(sum) * BigInt(i)
