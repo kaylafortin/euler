@@ -1,4 +1,5 @@
 import { template } from '../helpers/template.js';
+import { getArraySum, isPalindrome } from '../helpers/utils.js';
 
 /**
  * The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
@@ -10,16 +11,26 @@ import { template } from '../helpers/template.js';
 
 const TEST_ANSWER = 585
 const TEST_ARGS = {
+    min: 580,
     max: 600,
 }
 const ARGS = {
+    min: 0,
     max: 1000000
 }
 
 const convertToBinary = (dec) => (dec >>> 0).toString(2);
 
-const solution = () => {
-
+const solution = ({ min, max }) => {
+    const answer = [];
+    for (let i = min; i < max; i++) {
+        if (!isPalindrome(i)) continue;
+        const binary = convertToBinary(i);
+        if (isPalindrome(binary)) {
+            answer.push(i)
+        }
+    }
+    return getArraySum(answer)
 }
 
 template(ARGS, TEST_ARGS, TEST_ANSWER, solution)
