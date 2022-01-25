@@ -1,5 +1,6 @@
 import { template } from '../helpers/template.js';
 import { NAMES } from '../data/22.js';
+import { getPositionInAlphabet } from '../helpers/strings.js'
 
 /**
  * Using names.txt (right click and 'Save Link/Target As...'),
@@ -29,7 +30,6 @@ const ARGS = {
 
 const SORTED_NAMES = NAMES.sort();
 
-const getPositionInAlphabet = (str, position) => str.charCodeAt(position) - 65 + 1;
 
 const getSumForWord = (order) => {
     let sum = 0;
