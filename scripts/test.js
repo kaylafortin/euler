@@ -8,7 +8,7 @@ import {
     getFileRows,
     getTimeInMilliseconds,
     getMSTimeStr,
-    withAverageTime, withRecordAnswers
+    withAverageTime, withRecordAnswers, getNumArg, getSolutionPath
 } from './utils.js';
 
 
@@ -18,6 +18,7 @@ const averagePath = path.join(SCRIPTS_DIR, 'average.js')
 
 const TIME = 'time';
 const AVERAGE = 'average'
+const SOLUTION = 'solution'
 const solutionRegex = /(?<=solution.*:\s*)(\S\d*\w*.*)(?=\n)/g;
 const TABLE_SPLIT = /\s*\|*\s/
 const MIN_ANSWER_LENGTH = 15;
@@ -31,10 +32,13 @@ const getExistingAnswers = () => {
     const lines = getFileRows(answerPath);
     if (!lines) return {}
     return lines.reduce((acc, line) => {
-        const [number, result, time] = line.split(TABLE_SPLIT)
-        acc[number] = {
-            result,
-            time
+        const [number, result, time, average] = line.split(TABLE_SPLIT)
+        if (number !== '') {
+            acc[number] = {
+                result,
+                time,
+                average
+            }
         }
         return acc
     }, {})
@@ -105,6 +109,7 @@ const getResultCell = (result) => {
 }
 
 const getTimeCell = time => {
+    if (!time) return;
     const space = MIN_TIME_LENGTH - time.length;
     if (space < 0) console.log('Warning! Increase time cell size')
     return time + ` `.repeat(space)
@@ -128,13 +133,19 @@ const buildAnswerTable = (answerKey) =>
  * create log files to record average time
  */
 try {
-    const solutionFiles = await getSolutionFiles();
+    const fileNum = getNumArg();
     const answerKey = getExistingAnswers();
-    let newAnswers = {};
+
+    // add old answers in case not re-running all files
+    let newAnswers = {
+        ...answerKey,
+    };
+    // if file num arg provided, just run that file
+    const solutionFiles = await (!!fileNum) ? [`${fileNum}.js`] : getSolutionFiles();
     for (const file of solutionFiles) {
         try {
             const num = getProblemNumber(file);
-            const solution = await execSync(`node ${execSolutionPath} ${LOG} ${num}`, {
+            const solution = execSync(`node ${execSolutionPath} ${LOG} ${num}`, {
                 stdio: 'pipe',
                 encoding: 'utf8'
             })
