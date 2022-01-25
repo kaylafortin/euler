@@ -1,5 +1,5 @@
 import { template } from '../helpers/template.js';
-import { getDigitsOfNumber, getIsOdd, getPrimes, isPrime } from '../helpers/utils.js';
+import { getIsOdd, isPrime } from '../helpers/utils.js';
 
 /**
  * We shall say that an n-digit number is pan-digital if it makes use of all the digits 1 to n exactly once.

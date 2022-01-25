@@ -13,6 +13,7 @@
     "test:time": "yarn test time"
   },
   "dependencies": {
+    "fraction.js": "^4.1.2",
     "mathjs": "^10.0.2"
   }
 }
