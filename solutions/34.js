@@ -11,11 +11,9 @@ import { getArraySum, getDigitsOfNumber, getFactorial } from '../helpers/utils.j
 
 const TEST_ANSWER = 145
 const TEST_ARGS = {
-    limit: 6,
     max: 200
 }
 const ARGS = {
-    limit: 10,
     max: 1000000,
 }
 
@@ -27,7 +25,7 @@ const getFactorialObject = (limit) => {
     return factorials
 }
 
-const solution = ({ limit, max }) => {
+const solution = ({ max }) => {
     const answers = []
     const factorialObj = getFactorialObject(10)
     for (let j = 10; j < max; j++) {
