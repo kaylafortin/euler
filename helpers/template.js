@@ -4,7 +4,7 @@ const TEST_ANSWER = 0;
 
 export const template = (args, testingArgs, testAnswer, solution) => {
     let isTestCorrect;
-    if (testAnswer) {
+    if (testAnswer !== null) {
         console.time("test time");
         const controlAnswer = solution(testingArgs)
         console.timeEnd("test time");
@@ -15,7 +15,7 @@ export const template = (args, testingArgs, testAnswer, solution) => {
             console.log('actual: ', controlAnswer);
         }
     }
-    if (!testAnswer || isTestCorrect) {
+    if (testAnswer === null || isTestCorrect) {
         console.time("solution time");
         const answer = solution(args)
         console.log('solution: ', answer);
