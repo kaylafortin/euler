@@ -1,6 +1,7 @@
 import { template } from '../helpers/template.js';
 import { WORDS } from '../data/42.js'
 import { getPositionInAlphabet } from '../helpers/strings.js'
+import { getTriangleValue } from '../helpers/shapes.js';
 
 /**
  * The nth term of the sequence of triangle numbers is given by, tn = ½n(n+1); so the first ten triangle numbers are:
@@ -28,7 +29,6 @@ const ARGS = {
     end: LIMIT
 }
 
-const getTriangleValue = (n) => ((1 / 2) * (n)) * (n + 1)
 
 const getSumOfCharacters = (word) => {
     let sum = 0
