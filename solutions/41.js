@@ -1,5 +1,6 @@
 import { template } from '../helpers/template.js';
 import { getIsOdd, isPrime } from '../helpers/utils.js';
+import { getIsPanDigital } from '../helpers/digits.js';
 
 /**
  * We shall say that an n-digit number is pan-digital if it makes use of all the digits 1 to n exactly once.
@@ -22,21 +23,12 @@ const ARGS = {
 
 const DIGITS = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-const getIsPanDigital = (num) => {
-    const numString = num.toString()
-    for (let i = 0; i < numString.length; i++) {
-        if (numString.indexOf(DIGITS[i]) < 0) {
-            return false
-        }
-    }
-    return true
-}
 
 const solution = ({ limit }) => {
     let answer;
     // descend by 2 and start with odd number since primes can only be odd
     for (let i = getIsOdd(limit) ? limit : limit - 1; i > 0; i -= 2) {
-        if (getIsPanDigital(i)) {
+        if (getIsPanDigital(i, DIGITS)) {
             if (isPrime(i)) {
                 answer = i
                 break;
