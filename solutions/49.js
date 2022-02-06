@@ -1,6 +1,5 @@
 import { template } from '../helpers/template.js';
 import { buildNumberFromDigits, getPrimes } from '../helpers/utils.js';
-import { buildPermutations } from '../helpers/combinations.js';
 
 /**
  * The arithmetic sequence, 1487, 4817, 8147, in which each of the terms increases by 3330,
