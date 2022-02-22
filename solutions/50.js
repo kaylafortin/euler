@@ -1,6 +1,5 @@
 import { template } from '../helpers/template.js';
 import { getPrimes, isPrime } from '../helpers/utils.js';
-import { or } from 'mathjs';
 
 /**
  * The prime 41, can be written as the sum of six consecutive primes:
