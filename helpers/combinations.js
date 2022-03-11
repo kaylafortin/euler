@@ -2,7 +2,14 @@ import {
     getFactorial,
 } from './utils.js';
 
-export const getNumCombinations = ({ n, r }) => getFactorial(n) / (getFactorial(r) * (getFactorial(n - r)))
+export const getNumCombinations = ({ n, r }) => {
+    const nFactorial = getFactorial(n);
+    const isBigInt = (nFactorial > Number.MAX_SAFE_INTEGER)
+    if (isBigInt) {
+        return nFactorial / (BigInt(getFactorial(r)) * BigInt((getFactorial(n - r))))
+    }
+    return nFactorial / (getFactorial(r) * (getFactorial(n - r)))
+}
 
 export const getNumCombinationsRepetition = ({ n, r }) =>
     getFactorial(n + r - 1) / (getFactorial(r) * (getFactorial(n - 1)))
