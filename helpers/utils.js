@@ -43,7 +43,7 @@ export const isPrime = (num, list) => {
     if (num <= 1) return false;
     if (num === 2) return true;
     let isPrime = true
-    if (!list || num > list[list.length - 1]) {
+    if (!list) {
         let i = 3;
         if (num % 2 === 0) {
             return false
@@ -57,7 +57,7 @@ export const isPrime = (num, list) => {
         }
     } else {
         for (let i = 0; i < list.length; i++) {
-            if (list[i] >= num / i) {
+            if (list[i] > num / 2) {
                 break
             }
             if (num % list[i] === 0) {

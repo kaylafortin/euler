@@ -1,7 +1,8 @@
 import { execSync } from 'child_process';
 import {
+    getArgs,
     getCacheFilePath,
-    getMSTimeStr,
+    getMSTimeStr, getNumArg,
     getRequiredNumArg,
     getSolutionPath,
     getTimeFromSolution,

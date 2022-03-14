@@ -8,7 +8,7 @@ export const getProblemNumber = (file) => {
     return problemNumber;
 }
 
-export const getSolutionFiles = async () => fs.readdirSync(SOLUTIONS_DIR);
+export const getSolutionFiles = async () => fs.readdirSync(SOLUTIONS_DIR).filter(file => file.indexOf('.js') > 0);
 
 export const getSolutionPath = (num) => path.join(SOLUTIONS_DIR, `${num}.js`);
 export const getLogFilePath = (num) => path.join(CACHE_DIR, `${num}.log`);
@@ -32,7 +32,7 @@ export const getRequiredNumArg = (subprocess) => {
     const num = getNumArg(subprocess);
     if (!num) {
         console.log('Error! No problem number provided')
-        subprocess.exit(9)
+        // subprocess.exit(9)
     }
     return num
 }

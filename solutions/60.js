@@ -96,16 +96,13 @@ const buildPrimesArray = (max) => {
 const loopOverPrimes = (num, index, primes) => {
     const concatObj = []
     let hasMatch = false;
-    // console.log(index);
     for (let i = index; i < primes.length; i++) {
         const primeCheck = primes[i];
         if (checkConcat(num, primeCheck, primes)) {
             concatObj.push(primeCheck)
-            // concatObj[primeCheck] = primeCheck;
             hasMatch = true;
         }
     }
-// console.log(concatObj);
     return hasMatch && concatObj;
 }
 
@@ -176,7 +173,6 @@ const getByArray = ({ max, length = 3 }) => {
             const validConcatArr = checkConcatsArray(concatObject, length, step, currentCheck, [], primes);
             validConcatArr?.forEach((concatArray) => {
                 if (concatArray?.length >= length) {
-                    console.log('prime factors: ', concatArray);
                     answer.push(concatArray)
                 }
             });

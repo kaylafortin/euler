@@ -141,7 +141,11 @@ try {
         ...answerKey,
     };
     // if file num arg provided, just run that file
-    const solutionFiles = !!fileNum ? [`${fileNum}.js`] : await getSolutionFiles();
+    let solutionFiles = [`${fileNum}.js`]
+    if (!fileNum) {
+        solutionFiles = await getSolutionFiles();
+    }
+
     for (const file of solutionFiles) {
         try {
             const num = getProblemNumber(file);
